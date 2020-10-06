@@ -1,3 +1,4 @@
 Django>=3.0,<4.0
 psycopg2-binary>=2.8
 graphene-django>=2.0
+graphene-federation>=0.1.0

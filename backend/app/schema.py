@@ -1,6 +1,8 @@
 import graphene
+from graphene_federation import build_schema, key
 
 
+@key(fields="id")
 class User(graphene.ObjectType):
     id = graphene.ID()
     name = graphene.String()
@@ -18,4 +20,4 @@ class Query(graphene.ObjectType):
         ]
 
 
-schema = graphene.Schema(query=Query)
+schema = build_schema(query=Query)

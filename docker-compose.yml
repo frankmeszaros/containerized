@@ -1,17 +1,15 @@
 version: '3.8'
 services:
-    app:
-        build: ./app
-        ports:
-            - '3000:3000'
-            - '3001:3001'
     backend:
-        build: ./backend
+        build:
+            context: ./backend
         command: python manage.py runserver 0.0.0.0:8000
         volumes:
             - .:/home
         ports:
             - '8000:8000'
+        stdin_open: true
+        tty: true
         depends_on:
             - db
 
@@ -21,3 +19,15 @@ services:
             - POSTGRES_DB=postgres
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=postgres
+    app:
+        build:
+            context: ./app
+        ports:
+            - '3000:3000'
+            - '3001:3001'
+        depends_on:
+            - backend
+        volumes:
+            - ./frontend:/app
+            # One-way volume to use node_modules from inside image
+            - /app/node_modules

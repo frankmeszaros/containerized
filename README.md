@@ -10,3 +10,7 @@ A simple repository using `docker-compose` to run a backend powered by [Django](
 ```
 docker-compose up --build
 ```
+
+## Roadmap
+
+-   Federated GraphQL schema
