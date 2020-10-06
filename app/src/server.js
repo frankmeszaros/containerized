@@ -57,7 +57,7 @@ const schema = buildFederatedSchema({ typeDefs, resolvers });
 const gateway = new ApolloGateway({
 	serviceList: [
 		{ name: LOCAL, url: LOCAL },
-		{ name: 'django-backend2', url: 'http://backend:8000/graphql' },
+		{ name: 'django', url: 'http://backend:8000/graphql' },
 	],
 	buildService: ({ url, name }) =>
 		console.log(url) || name === LOCAL
